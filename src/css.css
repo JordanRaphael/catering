@@ -1,0 +1,13 @@
+.antd-list {
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+}
+
+.antd-list-item {
+
+}
+
+.antd-list-item:hover {
+    background-color:  #E0DEDE;
+}
