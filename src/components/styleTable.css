@@ -1,0 +1,21 @@
+.even-row {
+  background-color: lightgray;
+}
+
+.odd-row {
+  background-color: rgb(214, 197, 197);
+}
+
+.ant-table th,
+.ant-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.ant-table-cell {
+  border: 1px solid #ccc; /* Add border around each cell */
+}
+
+.select-style {
+  width: 150px;
+}
