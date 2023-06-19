@@ -61,6 +61,38 @@ export function UserList(props: IProps) {
       Thursday: structure,
       Friday: structure,
     },
+    {
+      name: "Zou",
+      Monday: structure,
+      Tuesday: structure,
+      Wednesday: structure,
+      Thursday: structure,
+      Friday: structure,
+    },
+    {
+      name: "Kwstas",
+      Monday: structure,
+      Tuesday: structure,
+      Wednesday: structure,
+      Thursday: structure,
+      Friday: structure,
+    },
+    {
+      name: "Dimitris",
+      Monday: structure,
+      Tuesday: structure,
+      Wednesday: structure,
+      Thursday: structure,
+      Friday: structure,
+    },
+    {
+      name: "KURIOS GIANNOUKOS",
+      Monday: structure,
+      Tuesday: structure,
+      Wednesday: structure,
+      Thursday: structure,
+      Friday: structure,
+    },
   ];
 
   return <CateringTable initialData={initialData} />;
