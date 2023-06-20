@@ -178,10 +178,11 @@ export const CateringTable = (props: IProps) => {
       }}
     >
       <Table
-        style={{ maxWidth: "100vw", overflowX: "auto" }}
+        style={{ maxWidth: "100vw" }}
         columns={columns}
         dataSource={data}
         rowClassName={rowClassName}
+        scroll={{ x: true }}
       />
     </div>
   );

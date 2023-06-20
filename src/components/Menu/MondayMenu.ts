@@ -59,6 +59,3 @@ export const MondayMenu = [
   },
   ...StandardMenu,
 ];
-
-const lala = MondayMenu.map((item) => item.value);
-console.log(lala);
