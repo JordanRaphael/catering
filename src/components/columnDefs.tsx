@@ -1,11 +1,7 @@
 import { Cascader, Table } from "antd";
 import { useState } from "react";
 import "./styleTable.css";
-import {
-  basicStructure,
-  foodAndPriceStructure,
-  foodMappingStructure,
-} from "./types";
+import { basicStructure, foodAndPriceStructure } from "./types";
 import { mapFood } from "./foodPriceMapping/foodPriceMapping";
 import { deserts, drinks, mainMenu, salads } from "./Menu/Menu";
 
@@ -15,7 +11,18 @@ interface IProps {
 
 export const CateringTable = (props: IProps) => {
   const [data, setData] = useState(props.initialData);
-  console.log(mainMenu);
+  const [selectedDay, setSelectedDay] = useState("Monday");
+  const dayOptions = [
+    { value: "Monday", label: "Monday" },
+    { value: "Tuesday", label: "Tuesday" },
+    { value: "Wednesday", label: "Wednesday" },
+    { value: "Thursday", label: "Thursday" },
+    { value: "Friday", label: "Friday" },
+  ];
+  const findIfIordanisIsGay = () => {
+    return true;
+  };
+
   const generateChildColumn = (
     title: string,
     day: string,
@@ -50,6 +57,7 @@ export const CateringTable = (props: IProps) => {
     generateChildColumn("Desert", day, (record) => (
       <Cascader
         options={deserts}
+        value={record[day]["food"]["desert"]}
         onChange={(selectedValue) =>
           handleFoodChange(day, "desert", selectedValue, record)
         }
@@ -76,34 +84,20 @@ export const CateringTable = (props: IProps) => {
       width: 70,
     },
     {
-      title: "Monday",
-      key: "Monday",
-      children: [...generateChildrenColumns("Monday")],
-    },
-    {
-      title: "Tuesday",
-      key: "Tuesday",
-      children: [...generateChildrenColumns("Tuesday")],
-    },
-    {
-      title: "Wednesday",
-      key: "Wednesday",
-      children: [...generateChildrenColumns("Wednesday")],
-    },
-    {
-      title: "Thursday",
-      key: "Thursday",
-      children: [...generateChildrenColumns("Thursday")],
-    },
-    {
-      title: "Friday",
-      key: "Friday",
-      children: [...generateChildrenColumns("Friday")],
+      title: (
+        <Cascader
+          options={dayOptions}
+          value={selectedDay}
+          onChange={(selectedValue) => setSelectedDay(selectedValue[0])}
+        />
+      ),
+      dataIndex: selectedDay.toLowerCase(),
+      key: selectedDay,
+      children: generateChildrenColumns(selectedDay),
     },
     {
       title: "Sum",
-      dataIndex: "sumPrice",
-      key: "sumPrice",
+      key: "sum",
       render: (_: any, record: basicStructure) => calculateSumOfWeek(record),
     },
   ];
@@ -175,15 +169,10 @@ export const CateringTable = (props: IProps) => {
     <div
       style={{
         height: "100vh",
+        width: "100vw",
       }}
     >
-      <Table
-        style={{ maxWidth: "100vw" }}
-        columns={columns}
-        dataSource={data}
-        rowClassName={rowClassName}
-        scroll={{ x: true }}
-      />
+      <Table columns={columns} dataSource={data} rowClassName={rowClassName} />
     </div>
   );
 };
