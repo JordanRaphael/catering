@@ -19,3 +19,7 @@
 .select-style {
   width: 150px;
 }
+
+.ant-pagination-item-link {
+  color: #ffffff !important;
+}
