@@ -11,7 +11,7 @@ interface IProps {
 
 export const CateringTable = (props: IProps) => {
   const [data, setData] = useState(props.initialData);
-  const [selectedDay, setSelectedDay] = useState("Monday");
+  const [selectedDay, setSelectedDay] = useState<any>("Monday");
   const dayOptions = [
     { value: "Monday", label: "Monday" },
     { value: "Tuesday", label: "Tuesday" },
